@@ -12,7 +12,7 @@
 
     <h2>最新版ダウンロード</h2>
     <p>
-        <a href="downloads/SDCheckSetup.exe" download class="btn">
+        <a href="#" onclick="checkLogin()" class="btn">
             SDCheckSetup.exe をダウンロード
         </a>
     </p>
@@ -25,5 +25,20 @@
     </ul>
 
     <p><a href="index.html">← ホームページに戻る</a></p>
+
+    <script>
+        function checkLogin() {
+            const loggedIn = localStorage.getItem("loggedIn");
+
+            if (loggedIn === "true") {
+                // Đã đăng nhập → cho phép tải file
+                window.location.href = "downloads/SDCheckSetup.exe";
+            } else {
+                // Chưa đăng nhập → chuyển sang trang login
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+
 </body>
 </html>
