@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <title>SDCheck - 構造図面チェック支援ソフト</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Thanh menu */
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .navbar-right {
+            float: right;
+        }
+    </style>
 </head>
+
 <body>
+
+    <!-- Thanh menu -->
+    <div class="navbar">
+        <a href="index.html">ホーム</a>
+        <a href="intro.html">紹介</a>
+        <a href="manual.html">使用方法</a>
+        <a href="download.html">ダウンロード</a>
+        <a href="copyright.html">著作権</a>
+
+        <span class="navbar-right">
+            <a href="#" onclick="logout()">ログアウト</a>
+            <a href="login.html" id="loginLink">ログイン</a>
+        </span>
+    </div>
+
     <h1>SDCheck ホームページへようこそ</h1>
     <p>SDCheck は、各種計算ソフトと連携して構造図面をチェックするための支援ソフトです。</p>
 
@@ -28,5 +64,20 @@
     <footer>
         <p>SDCheck Copyright (C)2025-2026 Nguyen Thanh Kieu</p>
     </footer>
+
+    <script>
+        // Ẩn/hiện nút Login – Logout
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn === "true") {
+            document.getElementById("loginLink").style.display = "none";
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            window.location.href = "index.html";
+        }
+    </script>
+
 </body>
 </html>
