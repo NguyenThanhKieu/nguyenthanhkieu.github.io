@@ -27,23 +27,32 @@
             const user = document.getElementById("username").value;
             const pass = document.getElementById("password").value;
 
-            // Danh sách tài khoản hợp lệ
+            // 2 tài khoản cố định
             const validUsers = [
                 { username: "admin", password: "123456" },
                 { username: "kieu", password: "sdcheck" }
             ];
 
-            // Kiểm tra user/pass
             const found = validUsers.find(u => u.username === user && u.password === pass);
 
             if (found) {
                 // Lưu trạng thái đăng nhập
                 localStorage.setItem("loggedIn", "true");
+                localStorage.setItem("username", user);
 
-                // Quay lại trang download
-                window.location.href = "download.html";
+                // Lấy trang trước khi login
+                const returnPage = localStorage.getItem("returnPage");
+
+                // Nếu có trang trước đó → quay lại đúng trang đó
+                if (returnPage) {
+                    window.location.href = returnPage;
+                } else {
+                    // Nếu không có (trường hợp hiếm) → quay về index
+                    window.location.href = "index.html";
+                }
             } else {
-                document.getElementById("error").textContent = "ユーザー名またはパスワードが正しくありません。";
+                document.getElementById("error").textContent =
+                    "ユーザー名またはパスワードが正しくありません。";
             }
         }
     </script>
